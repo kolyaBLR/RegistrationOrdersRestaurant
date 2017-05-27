@@ -27,6 +27,7 @@ namespace RestaurantBase.Concrete
                 element.Name = dish.Name;
                 element.CategoryDishId = dish.CategoryDishId;
                 element.Price = dish.Price;
+                element.Description = dish.Description;
             }
             Context.SaveChanges();
         }
