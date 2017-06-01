@@ -15,5 +15,6 @@ namespace RestaurantBase.Concrete
         public DbSet<CategoryDish> CategoryDish { get; set; }
         public DbSet<Table> Table { get; set; }
         public DbSet<Client> Client { get; set; }
+        public DbSet<PriceList> PriceList { get; set; }
     }
 }

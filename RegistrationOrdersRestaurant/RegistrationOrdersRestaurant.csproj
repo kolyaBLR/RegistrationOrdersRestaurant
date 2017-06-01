@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddDish.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDish.Designer.cs">
+      <DependentUpon>AddDish.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormComponents.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -61,6 +67,27 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Shop.Designer.cs">
+      <DependentUpon>Shop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowDish.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowDish.Designer.cs">
+      <DependentUpon>ShowDish.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Table.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Table.Designer.cs">
+      <DependentUpon>Table.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddDish.resx">
+      <DependentUpon>AddDish.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
@@ -73,6 +100,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Shop.resx">
+      <DependentUpon>Shop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowDish.resx">
+      <DependentUpon>ShowDish.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Table.resx">
+      <DependentUpon>Table.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -92,6 +128,9 @@
       <Project>{d9c07489-8f1c-41fe-990f-059457c6379e}</Project>
       <Name>RestaurantBase</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

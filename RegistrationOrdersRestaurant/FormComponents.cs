@@ -105,5 +105,37 @@ namespace RegistrationOrdersRestaurant
                 Name = category.CategoryDishId.ToString()
             };
         }
+
+        public Button MenuButton(string text)
+        {
+            return new Button()
+            {
+                Dock = DockStyle.Top,
+                Text = text,
+                Margin = new Padding(0)
+            };
+        }
+
+        public Label LabelText(string text)
+        {
+            return new Label()
+            {
+                Dock = DockStyle.Top,
+                Text = text,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+        }
+
+        public TableLayoutPanel CategoryList()
+        {
+            return new TableLayoutPanel()
+            {
+                Dock = DockStyle.Left,
+                ColumnCount = 1,
+                RowCount = 0,
+                Width = 110,
+                AutoScroll = true
+            };
+        }
     }
 }

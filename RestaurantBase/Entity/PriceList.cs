@@ -11,22 +11,13 @@ namespace RestaurantBase.Entity
     public class PriceList
     {
         [Column("Id")]
-        public int PriceListId;
+        public int PriceListId { get; set; }
 
         [Required]
         public int ClientId { get; set; }
 
-        [NotMapped]
-        public Client Client { get; set; }
-
         [Required]
         public int TableId { get; set; }
-
-        [NotMapped]
-        public Table Table { get; set; }
-
-        [NotMapped]
-        public Dish Dishes { get; set; }
 
         [Required]
         public decimal Price { get; set; }

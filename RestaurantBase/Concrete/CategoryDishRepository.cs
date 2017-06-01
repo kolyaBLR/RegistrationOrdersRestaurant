@@ -25,6 +25,11 @@ namespace RestaurantBase.Concrete
             return element;
         }
 
+        public CategoryDish Find(int CategoryDishId)
+        {
+            return Context.CategoryDish.Find(CategoryDishId);
+        }
+
         public void Save(CategoryDish CategoryDish)
         {
             if (CategoryDish.CategoryDishId == 0)

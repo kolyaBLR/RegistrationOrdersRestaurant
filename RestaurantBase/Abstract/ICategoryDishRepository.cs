@@ -12,5 +12,6 @@ namespace RestaurantBase.Abstract
         IEnumerable<CategoryDish> CategoryDish { get; }
         void Save(CategoryDish CategoryDish);
         CategoryDish Delete(int CategoryDishId);
+        CategoryDish Find(int CategoryDishId);
     }
 }

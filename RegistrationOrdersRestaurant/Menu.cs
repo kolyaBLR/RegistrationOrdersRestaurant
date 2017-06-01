@@ -37,27 +37,28 @@ namespace RegistrationOrdersRestaurant
             };
             Controls.Add(panelDish);
             ListDish();
-            CategoryListDish();
+            LeftMenu();
         }
 
-        private void CategoryListDish()
+        private void LeftMenu()
         {
-            TableLayoutPanel categoryList = new TableLayoutPanel()
-            {
-                Dock = DockStyle.Left,
-                ColumnCount = 1,
-                RowCount = 0,
-                Width = 100,
-                AutoScroll = true
-            };
             FormComponents components = new FormComponents();
-            Button categoryButton = new Button()
-            {
-                Dock = DockStyle.Top,
-                Text = "Все",
-                Margin = new Padding(0),
-                Name = "0",
-            };
+            TableLayoutPanel categoryList = components.CategoryList();
+
+            categoryList.Controls.Add(components.LabelText("Меню"));
+
+            Button shop = components.MenuButton("Купить");
+            shop.Click += Shop_Click;
+            categoryList.Controls.Add(shop);
+
+            Button claer = components.MenuButton("Очистить");
+            claer.Click += Clear_Click;
+            categoryList.Controls.Add(claer);
+
+            categoryList.Controls.Add(components.LabelText(""));
+            categoryList.Controls.Add(components.LabelText("Категории"));
+
+            Button categoryButton = components.CategoryButton(new CategoryDish() { CategoryDishId = 0, Name = "Все" });
             categoryButton.Click += CategoryButton_Click;
             categoryList.Controls.Add(categoryButton);
             foreach (var category in repositoryCategoryDish.CategoryDish)
@@ -66,6 +67,17 @@ namespace RegistrationOrdersRestaurant
                 categoryButton.Click += CategoryButton_Click;
                 categoryList.Controls.Add(categoryButton);
             }
+
+            categoryList.Controls.Add(components.LabelText(""));
+            categoryList.Controls.Add(components.LabelText("Администрирование"));
+
+            Button dish = components.MenuButton("Блюда");
+            dish.Click += Dish_Click;
+            categoryList.Controls.Add(dish);
+
+            Button table = components.MenuButton("Столики");
+            table.Click += Table_Click;
+            categoryList.Controls.Add(table);
 
             Controls.Add(categoryList);
         }
@@ -101,37 +113,69 @@ namespace RegistrationOrdersRestaurant
             panelDish.Controls.Add(new Panel());
         }
 
+        public void AddCountDish(int key, int sum)
+        {
+            try
+            {
+                countDish.Add(key, sum);
+            }
+            catch
+            {
+                countDish.Remove(key);
+                countDish.Add(key, sum);
+            }
+        }
+
+        public void OpenCountDish()
+        {
+            foreach (var dish in countDish)
+            {
+                foreach (var control in countLabelDish)
+                {
+                    if (dish.Key == control.Key)
+                    {
+                        control.Value.Text = dish.Value.ToString();
+                    }
+                }
+            }
+        }
+
         private void CategoryButton_Click(object sender, EventArgs e)
         {
             Button category = sender as Button;
             panelDish.Controls.Clear();
             countLabelDish.Clear();
             ListDish(Convert.ToInt32(category.Name));
+            OpenCountDish();
         }
 
         private void Add_Click(object sender, EventArgs e)
         {
             Button add = sender as Button;
-            foreach (var item in countLabelDish)
+            int sum = 0;
+            int key = Convert.ToInt32(add.Name);
+            foreach (var labelDish in countLabelDish)
             {
-                if (item.Key == Convert.ToInt32(add.Name))
+                if (labelDish.Key == key)
                 {
-                    int sum = Convert.ToInt32(item.Value.Text);
+                    sum = Convert.ToInt32(labelDish.Value.Text);
                     sum++;
-                    item.Value.Text = sum.ToString();
+                    labelDish.Value.Text = sum.ToString();
                 }
             }
-
+            AddCountDish(key, sum);
         }
 
         private void Delete_Click(object sender, EventArgs e)
         {
             Button delete = sender as Button;
+            int sum = 0;
+            int key = Convert.ToInt32(delete.Name);
             foreach (var item in countLabelDish)
             {
-                if (item.Key == Convert.ToInt32(delete.Name))
+                if (item.Key == key)
                 {
-                    int sum = Convert.ToInt32(item.Value.Text);
+                    sum = Convert.ToInt32(item.Value.Text);
                     sum--;
                     if (sum >= 0)
                         item.Value.Text = sum.ToString();
@@ -139,6 +183,37 @@ namespace RegistrationOrdersRestaurant
                         sum = 0;
                 }
             }
+            AddCountDish(key, sum);
+        }
+
+        private void Shop_Click(object sender, EventArgs e)
+        {
+            if (countDish.Count != 0)
+            {
+                Shop form = new Shop(countDish);
+                form.ShowDialog();
+            }
+            else
+                MessageBox.Show("Карзина блюд пуста.");
+        }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            countDish = new Dictionary<int, int>();
+            foreach (var item in countLabelDish.Values)
+                item.Text = "0";
+        }
+
+        private void Dish_Click(object sender, EventArgs e)
+        {
+            ShowDish form = new ShowDish();
+            form.ShowDialog();
+        }
+
+        private void Table_Click(object sender, EventArgs e)
+        {
+            Table form = new Table();
+            form.ShowDialog();
         }
     }
 }

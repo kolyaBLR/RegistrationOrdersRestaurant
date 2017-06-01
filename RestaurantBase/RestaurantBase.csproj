@@ -50,11 +50,13 @@
     <Compile Include="Abstract\ICategoryDishRepository.cs" />
     <Compile Include="Abstract\IClientRepository.cs" />
     <Compile Include="Abstract\IDishRepository.cs" />
+    <Compile Include="Abstract\IPriceListRepository.cs" />
     <Compile Include="Abstract\ITableRepository.cs" />
     <Compile Include="Concrete\CategoryDishRepository.cs" />
     <Compile Include="Concrete\ClientRepository.cs" />
     <Compile Include="Concrete\DishRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
+    <Compile Include="Concrete\PriceListRepository.cs" />
     <Compile Include="Concrete\TableRepository.cs" />
     <Compile Include="Entity\CategoryDish.cs" />
     <Compile Include="Entity\Client.cs" />

@@ -34,8 +34,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 261);
-            this.MinimumSize = new System.Drawing.Size(650, 300);
+            this.ClientSize = new System.Drawing.Size(684, 361);
+            this.MinimumSize = new System.Drawing.Size(700, 400);
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список блюд";
