@@ -95,6 +95,7 @@
             this.Controls.Add(this.PriceGrid);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Shop";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список покупок";
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PriceGrid)).EndInit();

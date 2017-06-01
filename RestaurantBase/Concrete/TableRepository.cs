@@ -33,16 +33,18 @@ namespace RestaurantBase.Concrete
             {
                 Table element = Context.Table.Find(table.TableId);
                 element.Count = table.Count;
-                element.Number = table.Number;
                 element.Description = table.Description;
+                element.Booking = table.Booking;
                 Context.Table.Add(element);
             }
             Context.SaveChanges();
         }
 
-        public IEnumerable<Table> SearchSpare()
+        public void ChangeBooking(int tableId, bool boolking)
         {
-            throw new NotImplementedException();
+            Table element = Context.Table.Find(tableId);
+            element.Booking = boolking;
+            Context.SaveChanges();
         }
     }
 }

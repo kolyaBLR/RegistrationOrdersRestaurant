@@ -200,6 +200,7 @@
             this.ClientSize = new System.Drawing.Size(571, 342);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "AddDish";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddDish";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

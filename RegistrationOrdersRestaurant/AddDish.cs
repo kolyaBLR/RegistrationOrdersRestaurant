@@ -16,16 +16,13 @@ namespace RegistrationOrdersRestaurant
 {
     public partial class AddDish : Form
     {
-        private IDishRepository repositoryDish;
-        private ICategoryDishRepository repositoryCategoryDish;
+        private IDishRepository repositoryDish = new DishRepository();
+        private ICategoryDishRepository repositoryCategoryDish = new CategoryDishRepository();
         private Dish dish = new Dish();
 
         public AddDish(int dishId = 0)
         {
             InitializeComponent();
-            repositoryDish = new DishRepository();
-            repositoryCategoryDish = new CategoryDishRepository();
-
             if (dishId != 0)
                  dish = repositoryDish.Dish.FirstOrDefault(d => d.DishId == dishId);
 

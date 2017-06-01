@@ -12,6 +12,6 @@ namespace RestaurantBase.Abstract
         IEnumerable<Table> Table { get; }
         void Save(Table table);
         Table Delete(int tableId);
-        IEnumerable<Table> SearchSpare();
+        void ChangeBooking(int idTable, bool status);
     }
 }

@@ -19,6 +19,6 @@ namespace RestaurantBase.Entity
         public int Count { get; set; }
 
         [Required]
-        public int Number { get; set; }
+        public bool Booking { get; set; }
     }
 }

@@ -14,16 +14,12 @@ namespace RegistrationOrdersRestaurant
 {
     public partial class ShowDish : Form
     {
-        private IDishRepository repositoryDish;
-        private ICategoryDishRepository repositoryCategoryDish;
+        private IDishRepository repositoryDish = new DishRepository();
+        private ICategoryDishRepository repositoryCategoryDish = new CategoryDishRepository();
 
         public ShowDish()
         {
             InitializeComponent();
-
-            repositoryDish = new DishRepository();
-            repositoryCategoryDish = new CategoryDishRepository();
-
             Dishes.ColumnCount = 5;
             Dishes.RowCount = 0;
             Dishes.Columns[0].HeaderText = "Id";

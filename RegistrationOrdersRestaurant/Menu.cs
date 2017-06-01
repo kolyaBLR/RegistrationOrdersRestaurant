@@ -15,18 +15,14 @@ namespace RegistrationOrdersRestaurant
 {
     public partial class Menu : Form
     {
-        private IDishRepository repositoryDish;
-        private ICategoryDishRepository repositoryCategoryDish;
-        private Dictionary<int, Label> countLabelDish;
+        private IDishRepository repositoryDish = new DishRepository();
+        private ICategoryDishRepository repositoryCategoryDish = new CategoryDishRepository();
+        private Dictionary<int, Label> countLabelDish = new Dictionary<int, Label>();
+        private Dictionary<int, int> countDish = new Dictionary<int, int>();
         private TableLayoutPanel panelDish;
-        private Dictionary<int, int> countDish;
 
         public Menu()
         {
-            countDish = new Dictionary<int, int>();
-            countLabelDish = new Dictionary<int, Label>();
-            repositoryDish = new DishRepository();
-            repositoryCategoryDish = new CategoryDishRepository();
             InitializeComponent();
             panelDish = new TableLayoutPanel()
             {
@@ -78,6 +74,10 @@ namespace RegistrationOrdersRestaurant
             Button table = components.MenuButton("Столики");
             table.Click += Table_Click;
             categoryList.Controls.Add(table);
+
+            Button addCategory = components.MenuButton("Категории");
+            addCategory.Click += AddCategory_Click;
+            categoryList.Controls.Add(addCategory);
 
             Controls.Add(categoryList);
         }
@@ -212,7 +212,13 @@ namespace RegistrationOrdersRestaurant
 
         private void Table_Click(object sender, EventArgs e)
         {
-            Table form = new Table();
+            ShowTable form = new ShowTable();
+            form.ShowDialog();
+        }
+
+        private void AddCategory_Click(object sender, EventArgs e)
+        {
+            ShowCategory form = new ShowCategory();
             form.ShowDialog();
         }
     }

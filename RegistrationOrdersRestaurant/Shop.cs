@@ -15,14 +15,13 @@ namespace RegistrationOrdersRestaurant
 {
     public partial class Shop : Form
     {
-        private IDishRepository repositoryDish;
+        private IDishRepository repositoryDish = new DishRepository();
 
         Dictionary<int, int> countDish;
 
         public Shop(Dictionary<int, int> countDish)
         {
             this.countDish = countDish;
-            repositoryDish = new DishRepository();
             InitializeComponent();
             PriceGrid.ColumnCount = 4;
             PriceGrid.RowCount = 0;

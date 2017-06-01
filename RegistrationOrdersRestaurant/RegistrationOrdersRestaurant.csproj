@@ -58,6 +58,12 @@
     <Compile Include="AddDish.Designer.cs">
       <DependentUpon>AddDish.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTable.Designer.cs">
+      <DependentUpon>AddTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormComponents.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -73,20 +79,29 @@
     <Compile Include="Shop.Designer.cs">
       <DependentUpon>Shop.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowCategory.Designer.cs">
+      <DependentUpon>ShowCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowDish.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ShowDish.Designer.cs">
       <DependentUpon>ShowDish.cs</DependentUpon>
     </Compile>
-    <Compile Include="Table.cs">
+    <Compile Include="ShowTable.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Table.Designer.cs">
-      <DependentUpon>Table.cs</DependentUpon>
+    <Compile Include="ShowTable.Designer.cs">
+      <DependentUpon>ShowTable.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AddDish.resx">
       <DependentUpon>AddDish.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddTable.resx">
+      <DependentUpon>AddTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
@@ -103,11 +118,14 @@
     <EmbeddedResource Include="Shop.resx">
       <DependentUpon>Shop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ShowCategory.resx">
+      <DependentUpon>ShowCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ShowDish.resx">
       <DependentUpon>ShowDish.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Table.resx">
-      <DependentUpon>Table.cs</DependentUpon>
+    <EmbeddedResource Include="ShowTable.resx">
+      <DependentUpon>ShowTable.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
