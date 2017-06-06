@@ -18,6 +18,7 @@ namespace RegistrationOrdersRestaurant
         private IDishRepository repositoryDish = new DishRepository();
 
         Dictionary<int, int> countDish;
+        private decimal fullPrice;
 
         public Shop(Dictionary<int, int> countDish)
         {
@@ -42,6 +43,7 @@ namespace RegistrationOrdersRestaurant
                 fullPrice += dish.Value * element.Price;
                 PriceGrid.Rows.Add(element.Name, element.Price.ToString(), dish.Value.ToString(), dish.Value * element.Price);
             }
+            this.fullPrice = fullPrice;
             PriceGrid.Rows.Add("", "", "Общая стоимость:", fullPrice);
         }
 
@@ -52,7 +54,8 @@ namespace RegistrationOrdersRestaurant
 
         private void Add_Click(object sender, EventArgs e)
         {
-
+            PriceListForm form = new PriceListForm(fullPrice);
+            form.ShowDialog();
         }
     }
 }

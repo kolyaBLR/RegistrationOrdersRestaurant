@@ -20,7 +20,7 @@ namespace RegistrationOrdersRestaurant
         public ShowDish()
         {
             InitializeComponent();
-            Dishes.ColumnCount = 5;
+            Dishes.ColumnCount = 6;
             Dishes.RowCount = 0;
             Dishes.Columns[0].HeaderText = "Id";
             Dishes.Columns[1].HeaderText = "Название";
@@ -35,8 +35,16 @@ namespace RegistrationOrdersRestaurant
             Dishes.Rows.Clear();
             foreach (var dish in repositoryDish.Dish)
             {
-                string categoryName = repositoryCategoryDish.Find(dish.CategoryDishId).Name;
-                Dishes.Rows.Add(dish.DishId.ToString(), dish.Name, categoryName, dish.Price.ToString(), "x");
+                string categoryName;
+                try
+                {
+                    categoryName = repositoryCategoryDish.Find(dish.CategoryDishId).Name;
+                }
+                catch
+                {
+                    categoryName = "Категория удалена";
+                }
+                Dishes.Rows.Add(dish.DishId, dish.Name, categoryName, dish.Price.ToString(), "x");
             }
         }
 

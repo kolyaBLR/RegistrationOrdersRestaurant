@@ -19,7 +19,7 @@ namespace RestaurantBase.Concrete
 
         public void Save(PriceList priceList)
         {
-            if (priceList.TableId == 0)
+            if (priceList.PriceListId == 0)
                 Context.PriceList.Add(priceList);
             else
             {

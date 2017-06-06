@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCategory.Designer.cs">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddDish.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,12 @@
     </Compile>
     <Compile Include="AddTable.Designer.cs">
       <DependentUpon>AddTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PriceListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PriceListForm.Designer.cs">
+      <DependentUpon>PriceListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormComponents.cs" />
     <Compile Include="Menu.cs">
@@ -97,11 +109,17 @@
     <Compile Include="ShowTable.Designer.cs">
       <DependentUpon>ShowTable.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddCategory.resx">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddDish.resx">
       <DependentUpon>AddDish.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddTable.resx">
       <DependentUpon>AddTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PriceListForm.resx">
+      <DependentUpon>PriceListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>

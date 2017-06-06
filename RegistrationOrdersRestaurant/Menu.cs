@@ -17,23 +17,49 @@ namespace RegistrationOrdersRestaurant
     {
         private IDishRepository repositoryDish = new DishRepository();
         private ICategoryDishRepository repositoryCategoryDish = new CategoryDishRepository();
-        private Dictionary<int, Label> countLabelDish = new Dictionary<int, Label>();
         private Dictionary<int, int> countDish = new Dictionary<int, int>();
-        private TableLayoutPanel panelDish;
+        private DataGridView dishGrid = new DataGridView();
+        Panel panel = new Panel()
+        {
+            Dock = DockStyle.Fill
+        };
 
         public Menu()
         {
             InitializeComponent();
-            panelDish = new TableLayoutPanel()
-            {
-                ColumnCount = 1,
-                RowCount = 0,
-                Dock = DockStyle.Fill,
-                AutoScroll = true
-            };
-            Controls.Add(panelDish);
+            Controls.Add(panel);
+            dishGrid.AllowUserToAddRows = false;
+            dishGrid.RowCount = 0;
+            dishGrid.ColumnCount = 6;
+            dishGrid.Columns[0].HeaderText = "Id";
+            dishGrid.Columns[1].HeaderText = "Название";
+            dishGrid.Columns[2].HeaderText = "Описание";
+            dishGrid.Columns[3].HeaderText = "Цена";
+            dishGrid.Columns[4].HeaderText = "Кол-во";
+            dishGrid.Columns[5].HeaderText = "Итоговая цена";
+            dishGrid.Columns[0].ReadOnly = true;
+            dishGrid.Columns[1].ReadOnly = true;
+            dishGrid.Columns[2].ReadOnly = true;
+            dishGrid.Columns[3].ReadOnly = true;
+            dishGrid.Columns[5].ReadOnly = true;
+            dishGrid.Dock = DockStyle.Fill;
+            dishGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dishGrid.CellEndEdit += DishGrid_CellEndEdit;
             ListDish();
             LeftMenu();
+        }
+
+        public void ListDish(int categoryId = 0)
+        {
+            dishGrid.RowCount = 0;
+
+            IEnumerable<Dish> dishes = categoryId == 0 ? repositoryDish.Dish :
+                repositoryDish.Dish.Where(dish => dish.CategoryDishId == categoryId);
+
+            foreach (var dish in dishes)
+                dishGrid.Rows.Add(dish.DishId, dish.Name, dish.Description, dish.Price, "0", "0,00");
+            dishGrid.Rows.Add("", "", "", "Итог:", "0", "0,00");
+            panel.Controls.Add(dishGrid);
         }
 
         private void LeftMenu()
@@ -65,7 +91,7 @@ namespace RegistrationOrdersRestaurant
             }
 
             categoryList.Controls.Add(components.LabelText(""));
-            categoryList.Controls.Add(components.LabelText("Администрирование"));
+            categoryList.Controls.Add(components.LabelText("Админка"));
 
             Button dish = components.MenuButton("Блюда");
             dish.Click += Dish_Click;
@@ -80,37 +106,6 @@ namespace RegistrationOrdersRestaurant
             categoryList.Controls.Add(addCategory);
 
             Controls.Add(categoryList);
-        }
-
-        public void ListDish(int categoryId = 0)
-        {
-            IEnumerable<Dish> dishes = categoryId == 0 ? repositoryDish.Dish :
-                repositoryDish.Dish.Where(dish => dish.CategoryDishId == categoryId);
-            panelDish.Height = dishes.Count() * 100 + 85;
-
-            foreach (var dish in dishes)
-            {
-                FormComponents components = new FormComponents();
-                Panel panel = components.Panel();
-                Panel panelCount = components.PanelCount(dish);
-
-                Button add = components.Add(dish);
-                add.Click += Add_Click;
-                Button delete = components.Delete(dish);
-                delete.Click += Delete_Click;
-                panelCount.Controls.Add(add);
-                panelCount.Controls.Add(delete);
-
-                Label countLabel = components.Count(dish);
-                panelCount.Controls.Add(countLabel);
-                countLabelDish.Add(dish.DishId, countLabel);
-
-                panel.Controls.Add(components.Text(dish));
-                panel.Controls.Add(panelCount);
-                panel.Controls.Add(components.Image(dish));
-                panelDish.Controls.Add(panel);
-            }
-            panelDish.Controls.Add(new Panel());
         }
 
         public void AddCountDish(int key, int sum)
@@ -128,62 +123,31 @@ namespace RegistrationOrdersRestaurant
 
         public void OpenCountDish()
         {
+            decimal fullPrice = 0;
+            int count = 0;
             foreach (var dish in countDish)
             {
-                foreach (var control in countLabelDish)
+                for (int i = 0; i < dishGrid.RowCount - 1; i++)
                 {
-                    if (dish.Key == control.Key)
+                    if (dish.Key == Convert.ToInt32(dishGrid.Rows[i].Cells[0].Value))
                     {
-                        control.Value.Text = dish.Value.ToString();
+                        dishGrid.Rows[i].Cells[4].Value = dish.Value;
+                        decimal price = Convert.ToDecimal(dishGrid.Rows[i].Cells[3].Value);
+                        fullPrice += price;
+                        count += dish.Value;
+                        dishGrid.Rows[i].Cells[5].Value = dish.Value * price;
                     }
                 }
             }
+            dishGrid.Rows[dishGrid.RowCount - 1].Cells[4].Value = count;
+            dishGrid.Rows[dishGrid.RowCount - 1].Cells[5].Value = fullPrice * count;
         }
 
         private void CategoryButton_Click(object sender, EventArgs e)
         {
             Button category = sender as Button;
-            panelDish.Controls.Clear();
-            countLabelDish.Clear();
             ListDish(Convert.ToInt32(category.Name));
             OpenCountDish();
-        }
-
-        private void Add_Click(object sender, EventArgs e)
-        {
-            Button add = sender as Button;
-            int sum = 0;
-            int key = Convert.ToInt32(add.Name);
-            foreach (var labelDish in countLabelDish)
-            {
-                if (labelDish.Key == key)
-                {
-                    sum = Convert.ToInt32(labelDish.Value.Text);
-                    sum++;
-                    labelDish.Value.Text = sum.ToString();
-                }
-            }
-            AddCountDish(key, sum);
-        }
-
-        private void Delete_Click(object sender, EventArgs e)
-        {
-            Button delete = sender as Button;
-            int sum = 0;
-            int key = Convert.ToInt32(delete.Name);
-            foreach (var item in countLabelDish)
-            {
-                if (item.Key == key)
-                {
-                    sum = Convert.ToInt32(item.Value.Text);
-                    sum--;
-                    if (sum >= 0)
-                        item.Value.Text = sum.ToString();
-                    else
-                        sum = 0;
-                }
-            }
-            AddCountDish(key, sum);
         }
 
         private void Shop_Click(object sender, EventArgs e)
@@ -200,26 +164,54 @@ namespace RegistrationOrdersRestaurant
         private void Clear_Click(object sender, EventArgs e)
         {
             countDish = new Dictionary<int, int>();
-            foreach (var item in countLabelDish.Values)
-                item.Text = "0";
+            for (int i = 0; i < dishGrid.RowCount; i++)
+            {
+                dishGrid.Rows[i].Cells[4].Value = "0";
+                dishGrid.Rows[i].Cells[5].Value = "0,00";
+            }
         }
 
         private void Dish_Click(object sender, EventArgs e)
         {
             ShowDish form = new ShowDish();
             form.ShowDialog();
+            ListDish();
+            OpenCountDish();
         }
 
         private void Table_Click(object sender, EventArgs e)
         {
             ShowTable form = new ShowTable();
             form.ShowDialog();
+            ListDish();
+            OpenCountDish();
         }
 
         private void AddCategory_Click(object sender, EventArgs e)
         {
             ShowCategory form = new ShowCategory();
             form.ShowDialog();
+            ListDish();
+            OpenCountDish();
+        }
+
+        private void DishGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            Int32.TryParse(dishGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out int count);
+            dishGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Math.Abs(count);
+            decimal price = Convert.ToDecimal(dishGrid.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value);
+            dishGrid.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value = count * price;
+            int key = Convert.ToInt32(dishGrid.Rows[e.RowIndex].Cells[0].Value);
+            AddCountDish(key, count);
+            price = 0;
+            count = 0;
+            for (int i = 0; i < dishGrid.RowCount - 1; i++)
+            {
+                price += Convert.ToDecimal(dishGrid.Rows[i].Cells[e.ColumnIndex + 1].Value);
+                count += Convert.ToInt32(dishGrid.Rows[i].Cells[e.ColumnIndex].Value);
+            }
+            dishGrid.Rows[dishGrid.RowCount - 1].Cells[e.ColumnIndex + 1].Value = price;
+            dishGrid.Rows[dishGrid.RowCount - 1].Cells[e.ColumnIndex].Value = count;
         }
     }
 }
