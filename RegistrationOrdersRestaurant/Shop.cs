@@ -25,7 +25,6 @@ namespace RegistrationOrdersRestaurant
             this.countDish = countDish;
             InitializeComponent();
             PriceGrid.ColumnCount = 4;
-            PriceGrid.RowCount = 0;
             PriceGrid.Columns[0].HeaderText = "Название";
             PriceGrid.Columns[1].HeaderText = "Цена рублей за одно блюдо";
             PriceGrid.Columns[2].HeaderText = "Кол-во";

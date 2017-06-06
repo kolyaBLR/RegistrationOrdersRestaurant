@@ -20,8 +20,7 @@ namespace RegistrationOrdersRestaurant
         public ShowDish()
         {
             InitializeComponent();
-            Dishes.ColumnCount = 6;
-            Dishes.RowCount = 0;
+            Dishes.ColumnCount = 5;
             Dishes.Columns[0].HeaderText = "Id";
             Dishes.Columns[1].HeaderText = "Название";
             Dishes.Columns[2].HeaderText = "Категория";

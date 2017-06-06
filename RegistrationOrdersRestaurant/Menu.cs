@@ -29,7 +29,6 @@ namespace RegistrationOrdersRestaurant
             InitializeComponent();
             Controls.Add(panel);
             dishGrid.AllowUserToAddRows = false;
-            dishGrid.RowCount = 0;
             dishGrid.ColumnCount = 6;
             dishGrid.Columns[0].HeaderText = "Id";
             dishGrid.Columns[1].HeaderText = "Название";

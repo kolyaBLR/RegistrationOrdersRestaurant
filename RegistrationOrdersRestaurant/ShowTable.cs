@@ -20,7 +20,6 @@ namespace RegistrationOrdersRestaurant
         {
             InitializeComponent();
             TableGrid.ColumnCount = 5;
-            TableGrid.RowCount = 0;
             TableGrid.Columns[0].HeaderText = "Id";
             TableGrid.Columns[1].HeaderText = "Описание";
             TableGrid.Columns[2].HeaderText = "Кол-во мест";

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.SaveBox = new System.Windows.Forms.Button();
             this.AddBox = new System.Windows.Forms.Button();
             this.CloseBox = new System.Windows.Forms.Button();
             this.TableGrid = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +48,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.SaveBox, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.AddBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.CloseBox, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -58,6 +58,17 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(431, 39);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // SaveBox
+            // 
+            this.SaveBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SaveBox.Location = new System.Drawing.Point(146, 3);
+            this.SaveBox.Name = "SaveBox";
+            this.SaveBox.Size = new System.Drawing.Size(137, 33);
+            this.SaveBox.TabIndex = 2;
+            this.SaveBox.Text = "Сохранить";
+            this.SaveBox.UseVisualStyleBackColor = true;
+            this.SaveBox.Click += new System.EventHandler(this.SaveBox_Click);
             // 
             // AddBox
             // 
@@ -103,16 +114,6 @@
             this.TableGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableGrid_CellClick);
             this.TableGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableGrid_CellDoubleClick);
             // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(146, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 33);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "Column1";
@@ -132,20 +133,21 @@
             // 
             this.Column4.HeaderText = "Column4";
             this.Column4.Name = "Column4";
+            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Column5";
             this.Column5.Name = "Column5";
             // 
-            // TableForm
+            // ShowTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(431, 276);
             this.Controls.Add(this.TableGrid);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "TableForm";
+            this.Name = "ShowTable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Table";
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -160,7 +162,7 @@
         private System.Windows.Forms.DataGridView TableGrid;
         private System.Windows.Forms.Button AddBox;
         private System.Windows.Forms.Button CloseBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button SaveBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

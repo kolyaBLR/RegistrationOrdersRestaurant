@@ -62,7 +62,7 @@ namespace RegistrationOrdersRestaurant
                 priceList.TableId = repositoryTable.Table.FirstOrDefault(t => t.TableId == Convert.ToInt32(TableBox.Text)).TableId;
                 repositoryPriceList.Save(priceList);
                 MessageBox.Show("Покупка успешно завершена.\nКлиент:" + ClientBox.Text + "\nСтолик:" + priceList.TableId + "\nЦена:" + priceList.Price);
-                Close();
+                Application.Restart();
             }
         }
 
