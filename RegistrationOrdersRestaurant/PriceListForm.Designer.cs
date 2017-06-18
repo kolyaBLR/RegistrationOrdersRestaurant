@@ -37,8 +37,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.TableBox = new System.Windows.Forms.ComboBox();
             this.TableDescription = new System.Windows.Forms.Label();
+            this.TableBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -164,18 +164,6 @@
             this.panel1.Size = new System.Drawing.Size(256, 105);
             this.panel1.TabIndex = 11;
             // 
-            // TableBox
-            // 
-            this.TableBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TableBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TableBox.FormattingEnabled = true;
-            this.TableBox.Location = new System.Drawing.Point(0, 0);
-            this.TableBox.Margin = new System.Windows.Forms.Padding(10);
-            this.TableBox.Name = "TableBox";
-            this.TableBox.Size = new System.Drawing.Size(256, 21);
-            this.TableBox.TabIndex = 12;
-            this.TableBox.SelectedIndexChanged += new System.EventHandler(this.TableBox_SelectedIndexChanged);
-            // 
             // TableDescription
             // 
             this.TableDescription.AutoSize = true;
@@ -187,6 +175,18 @@
             this.TableDescription.Size = new System.Drawing.Size(0, 19);
             this.TableDescription.TabIndex = 13;
             this.TableDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TableBox
+            // 
+            this.TableBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TableBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TableBox.FormattingEnabled = true;
+            this.TableBox.Location = new System.Drawing.Point(0, 0);
+            this.TableBox.Margin = new System.Windows.Forms.Padding(10);
+            this.TableBox.Name = "TableBox";
+            this.TableBox.Size = new System.Drawing.Size(256, 21);
+            this.TableBox.TabIndex = 12;
+            this.TableBox.SelectedIndexChanged += new System.EventHandler(this.TableBox_SelectedIndexChanged);
             // 
             // PriceListForm
             // 

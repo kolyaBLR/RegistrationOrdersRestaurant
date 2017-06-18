@@ -34,7 +34,7 @@ namespace RegistrationOrdersRestaurant
             dishGrid.Columns[1].HeaderText = "Название";
             dishGrid.Columns[2].HeaderText = "Описание";
             dishGrid.Columns[3].HeaderText = "Цена";
-            dishGrid.Columns[4].HeaderText = "Кол-во";
+            dishGrid.Columns[4].HeaderText = "Кол-во (редактируется)";
             dishGrid.Columns[5].HeaderText = "Итоговая цена";
             dishGrid.Columns[0].ReadOnly = true;
             dishGrid.Columns[1].ReadOnly = true;
@@ -46,6 +46,7 @@ namespace RegistrationOrdersRestaurant
             dishGrid.CellEndEdit += DishGrid_CellEndEdit;
             ListDish();
             LeftMenu();
+            dishGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
 
         public void ListDish(int categoryId = 0)
@@ -103,6 +104,10 @@ namespace RegistrationOrdersRestaurant
             Button addCategory = components.MenuButton("Категории");
             addCategory.Click += AddCategory_Click;
             categoryList.Controls.Add(addCategory);
+
+            Button price = components.MenuButton("Чеки");
+            price.Click += Price_Click;
+            categoryList.Controls.Add(price);
 
             Controls.Add(categoryList);
         }
@@ -211,6 +216,17 @@ namespace RegistrationOrdersRestaurant
             }
             dishGrid.Rows[dishGrid.RowCount - 1].Cells[e.ColumnIndex + 1].Value = price;
             dishGrid.Rows[dishGrid.RowCount - 1].Cells[e.ColumnIndex].Value = count;
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            dishGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        }
+
+        private void Price_Click(object sender, EventArgs e)
+        {
+            ShowPrice form = new ShowPrice();
+            form.ShowDialog();
         }
     }
 }

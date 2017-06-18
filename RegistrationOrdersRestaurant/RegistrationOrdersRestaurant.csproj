@@ -103,6 +103,12 @@
     <Compile Include="ShowDish.Designer.cs">
       <DependentUpon>ShowDish.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowPrice.Designer.cs">
+      <DependentUpon>ShowPrice.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowTable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShowDish.resx">
       <DependentUpon>ShowDish.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowPrice.resx">
+      <DependentUpon>ShowPrice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowTable.resx">
       <DependentUpon>ShowTable.cs</DependentUpon>

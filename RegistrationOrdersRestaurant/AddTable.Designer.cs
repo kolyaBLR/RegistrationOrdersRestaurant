@@ -111,23 +111,26 @@
             // Save
             // 
             this.Save.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Save.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Save.Location = new System.Drawing.Point(164, 187);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(156, 40);
             this.Save.TabIndex = 5;
-            this.Save.Text = "Сохранить";
+            this.Save.Text = "Добавить";
             this.Save.UseVisualStyleBackColor = true;
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // CloseBox
             // 
             this.CloseBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CloseBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CloseBox.Location = new System.Drawing.Point(3, 187);
             this.CloseBox.Name = "CloseBox";
             this.CloseBox.Size = new System.Drawing.Size(155, 40);
             this.CloseBox.TabIndex = 4;
-            this.CloseBox.Text = "Отмена";
+            this.CloseBox.Text = "Добавить";
             this.CloseBox.UseVisualStyleBackColor = true;
+            this.CloseBox.Click += new System.EventHandler(this.CloseBox_Click);
             // 
             // AddTable
             // 

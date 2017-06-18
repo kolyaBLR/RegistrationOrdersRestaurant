@@ -55,5 +55,10 @@ namespace RegistrationOrdersRestaurant
                 Close();
             }
         }
+
+        private void CloseBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
