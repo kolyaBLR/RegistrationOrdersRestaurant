@@ -54,7 +54,7 @@
             this.ClientSize = new System.Drawing.Size(390, 253);
             this.Controls.Add(this.PriceGrid);
             this.Name = "ShowPrice";
-            this.Text = "ShowPrice";
+            this.Text = "Чеки";
             ((System.ComponentModel.ISupportInitialize)(this.PriceGrid)).EndInit();
             this.ResumeLayout(false);
 

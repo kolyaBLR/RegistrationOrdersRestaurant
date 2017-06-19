@@ -149,7 +149,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ShowTable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Table";
+            this.Text = "Список столиков";
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TableGrid)).EndInit();
             this.ResumeLayout(false);

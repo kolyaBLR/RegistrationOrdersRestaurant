@@ -126,7 +126,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ShowCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ShowCategory";
+            this.Text = "Список категоприй";
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CategoryGrid)).EndInit();
             this.ResumeLayout(false);

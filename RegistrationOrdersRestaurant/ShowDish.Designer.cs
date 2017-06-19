@@ -140,7 +140,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ShowDish";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ShowDish";
+            this.Text = "Список блюд";
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dishes)).EndInit();
             this.ResumeLayout(false);

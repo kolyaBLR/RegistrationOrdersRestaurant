@@ -57,7 +57,14 @@ namespace RegistrationOrdersRestaurant
                             Name = ClientBox.Text
                         });
                     }
-                    priceList.ClientId = repositoryClient.Client.FirstOrDefault(c => c.Name == ClientBox.Text).ClientId;
+                    try
+                    {
+                        priceList.ClientId = repositoryClient.Client.FirstOrDefault(c => c.Name == ClientBox.Text).ClientId;
+                    }
+                    catch
+                    {
+                        priceList.ClientId = 0;
+                    }
                 }
                 priceList.TableId = repositoryTable.Table.FirstOrDefault(t => t.TableId == Convert.ToInt32(TableBox.Text)).TableId;
                 repositoryPriceList.Save(priceList);

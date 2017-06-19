@@ -17,11 +17,17 @@ namespace RegistrationOrdersRestaurant
     {
         private ITableRepository repositoryTable = new TableRepository();
         private int tableId;
+        private Table table = new Table();
 
         public AddTable(int tableId = 0)
         {
-            this.tableId = tableId;
             InitializeComponent();
+            this.tableId = tableId;
+            if (tableId != 0)
+                table = repositoryTable.Table.FirstOrDefault(t => t.TableId == tableId);
+
+            DescriptionBox.Text = table.Description;
+            CountBox.Text = table.Count.ToString();
         }
 
         private void CountBox_KeyPress(object sender, KeyPressEventArgs e)

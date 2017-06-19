@@ -128,7 +128,7 @@
             this.CloseBox.Name = "CloseBox";
             this.CloseBox.Size = new System.Drawing.Size(155, 40);
             this.CloseBox.TabIndex = 4;
-            this.CloseBox.Text = "Добавить";
+            this.CloseBox.Text = "Назад";
             this.CloseBox.UseVisualStyleBackColor = true;
             this.CloseBox.Click += new System.EventHandler(this.CloseBox_Click);
             // 
@@ -140,7 +140,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "AddTable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddTable";
+            this.Text = "Добаение столсика";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

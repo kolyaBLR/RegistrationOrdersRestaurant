@@ -195,7 +195,7 @@
             this.ClientSize = new System.Drawing.Size(524, 278);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PriceListForm";
-            this.Text = "ClientConfiguration";
+            this.Text = "Форма покупки";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
